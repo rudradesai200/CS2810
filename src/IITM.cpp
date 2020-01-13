@@ -1,4 +1,4 @@
-#include"../include/IITM.h"
+#include "../include/IITM.h"
 #include<cstdlib>
 
 #define maxnamelength 5
@@ -30,9 +30,9 @@ std::string randomName(int length) {
 void IITM::init(int N,int M){
 	int bts = std::rand()%N + 1;
 	int dds = N - bts;
-	int hosts = std::rand()%maxhostels + 1
+	int hosts = std::rand()%maxhostels + 1;
 	//creating faculties
-	string n;
+	std::string n;
 	bool f;
 	Faculty temp;
 	for(int i=0;i<M;i++){
@@ -48,16 +48,16 @@ void IITM::init(int N,int M){
 		hostels.push_back(n);
 	}
 
-	string r;
+	std::string r;
 	float cgpa;
 	int hno;
 	int x;
 	BTech stud;
 	//creating Btech students
 	for(int i=0;i<bts;i++){
-		cg = static_cast <float> (std::rand()) / static_cast <float> (std::RAND_MAX);
-		r = 'B' + std::str(i+1);
+		cgpa = static_cast <float> (std::rand()) / static_cast <float> (RAND_MAX);
 		hno = std::rand()%bts;
+		r = 'B' + (i+1);
 		x = std::rand()%M;
 		while(!faculties[x].isperm()){ //check what if no faculty is perm
 			x = std::rand()%M;
@@ -68,8 +68,8 @@ void IITM::init(int N,int M){
 
 	DualDegree student;
 	for(int i=0;i<dds;i++){
-		cg = static_cast <float> (std::rand()) / static_cast <float> (std::RAND_MAX);
-		r = 'D' + std::str(i+1);
+		cgpa = static_cast <float> (std::rand()) / static_cast <float> (RAND_MAX);
+		r = 'D' + (i+1);
 		hno = std::rand()%dds;
 		x = std::rand()%M;
 		while(!faculties[x].isperm()){ //check what if no faculty is perm
@@ -82,12 +82,12 @@ void IITM::init(int N,int M){
 
 void IITM::check(){
 	for(auto x:btechs){
-		cout<<x.RollN<<endl;
+		std::cout<<x.RollN<<std::endl;
 	}
 	for(auto x:duals){
-		cout<<x.RollN<<endl;
+		std::cout<<x.RollN<<std::endl;
 	}
 	for(auto x:faculties){
-		cout<<x.name<<endl;
+		std::cout<<x.name<<std::endl;
 	}
 }

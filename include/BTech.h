@@ -4,6 +4,7 @@
 #ifndef btech
 #define btech
 class BTech{
+public:
 	std::string RollN;
 	std::string Hostel;
 	Faculty facad;

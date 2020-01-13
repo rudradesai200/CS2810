@@ -4,6 +4,7 @@
 #ifndef dualdegree
 #define dualdegree
 class DualDegree{
+public:
 	std::string RollN;
 	std::string Hostel;
 	Faculty facad;

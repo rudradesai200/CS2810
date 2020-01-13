@@ -2,6 +2,7 @@
 #ifndef faculty
 #define faculty
 class Faculty{
+public:
 	std::string name;
 	bool perm;
 
