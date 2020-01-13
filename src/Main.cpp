@@ -1,7 +1,10 @@
-#include"Faculty.h"
-#include"BTech.h"
-#include"DualDegree.h"
+#include"../include/iitm.h"
 
 using namespace std;
 
+int main(){
+	IITM iitm;
+	iitm.init(10,10);
+	iitm.check();
+}
 
