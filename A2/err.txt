@@ -1,0 +1,239 @@
+In file included from A2.cpp:3:0:
+A2.h: In function ‘bool sortitem(Item, Item)’:
+A2.h:35:6: error: ‘int Item::id’ is private
+  int id;
+      ^
+A2.cpp:8:12: error: within this context
+  return (a.id > b.id);
+            ^
+In file included from A2.cpp:3:0:
+A2.h:35:6: error: ‘int Item::id’ is private
+  int id;
+      ^
+A2.cpp:8:19: error: within this context
+  return (a.id > b.id);
+                   ^
+A2.cpp: In constructor ‘Item::Item(int, float, std::string, std::string)’:
+A2.cpp:58:54: error: no matching function for call to ‘Pen::Pen()’
+ Item::Item(int id,float price,string manu,string type){
+                                                      ^
+A2.cpp:58:54: note: candidates are:
+A2.cpp:12:1: note: Pen::Pen(int, float, std::string, std::string)
+ Pen::Pen(int id,float w,string c,string s){
+ ^
+A2.cpp:12:1: note:   candidate expects 4 arguments, 0 provided
+In file included from A2.cpp:3:0:
+A2.h:6:7: note: Pen::Pen(const Pen&)
+ class Pen{
+       ^
+A2.h:6:7: note:   candidate expects 1 argument, 0 provided
+A2.cpp:58:54: error: no matching function for call to ‘Pencil::Pencil()’
+ Item::Item(int id,float price,string manu,string type){
+                                                      ^
+A2.cpp:58:54: note: candidates are:
+A2.cpp:35:1: note: Pencil::Pencil(int, float, std::string, std::string)
+ Pencil::Pencil(int id,float w,string c,string s){
+ ^
+A2.cpp:35:1: note:   candidate expects 4 arguments, 0 provided
+In file included from A2.cpp:3:0:
+A2.h:20:7: note: Pencil::Pencil(const Pencil&)
+ class Pencil{
+       ^
+A2.h:20:7: note:   candidate expects 1 argument, 0 provided
+A2.cpp: In destructor ‘Item::~Item()’:
+A2.cpp:67:10: error: type ‘class Pen’ argument given to ‘delete’, expected pointer
+   delete pe;
+          ^
+A2.cpp:70:10: error: type ‘class Pencil’ argument given to ‘delete’, expected pointer
+   delete pn;
+          ^
+A2.cpp: In member function ‘void Item::printpen()’:
+A2.cpp:30:6: error: ‘void Pen::print()’ is private
+ void Pen::print(){
+      ^
+A2.cpp:99:12: error: within this context
+   pe.print();
+            ^
+A2.cpp: In member function ‘void Item::printpencil()’:
+A2.cpp:53:6: error: ‘void Pencil::print()’ is private
+ void Pencil::print(){
+      ^
+A2.cpp:104:12: error: within this context
+   pn.print();
+            ^
+A2.cpp: In member function ‘void Inventory::del()’:
+A2.cpp:112:11: error: ‘x’ does not name a type
+  for(auto x:items){
+           ^
+A2.cpp:118:1: error: expected ‘;’ before ‘}’ token
+ }
+ ^
+A2.cpp:118:1: error: expected primary-expression before ‘}’ token
+A2.cpp:118:1: error: expected ‘;’ before ‘}’ token
+A2.cpp:118:1: error: expected primary-expression before ‘}’ token
+A2.cpp:118:1: error: expected ‘)’ before ‘}’ token
+A2.cpp:118:1: error: expected primary-expression before ‘}’ token
+A2.cpp: In member function ‘void Inventory::add(char)’:
+A2.cpp:58:1: error: ‘Item::Item(int, float, std::string, std::string)’ is private
+ Item::Item(int id,float price,string manu,string type){
+ ^
+A2.cpp:125:32: error: within this context
+   Item* temp = new Item(i,p,m,t);
+                                ^
+A2.cpp:12:1: error: ‘Pen::Pen(int, float, std::string, std::string)’ is private
+ Pen::Pen(int id,float w,string c,string s){
+ ^
+A2.cpp:133:29: error: within this context
+   Pen temp = new Pen(i,p,m,t);
+                             ^
+A2.cpp:133:29: error: conversion from ‘Pen*’ to non-scalar type ‘Pen’ requested
+A2.cpp:134:12: error: ‘x’ does not name a type
+   for(auto x:items){
+            ^
+A2.cpp:139:2: error: expected ‘;’ before ‘}’ token
+  }
+  ^
+A2.cpp:139:2: error: expected primary-expression before ‘}’ token
+A2.cpp:139:2: error: expected ‘;’ before ‘}’ token
+A2.cpp:139:2: error: expected primary-expression before ‘}’ token
+A2.cpp:139:2: error: expected ‘)’ before ‘}’ token
+A2.cpp:139:2: error: expected primary-expression before ‘}’ token
+A2.cpp:35:1: error: ‘Pencil::Pencil(int, float, std::string, std::string)’ is private
+ Pencil::Pencil(int id,float w,string c,string s){
+ ^
+A2.cpp:145:35: error: within this context
+   Pencil temp = new Pencil(i,p,m,t);
+                                   ^
+A2.cpp:145:35: error: conversion from ‘Pencil*’ to non-scalar type ‘Pencil’ requested
+A2.cpp:146:12: error: ‘x’ does not name a type
+   for(auto x:items){
+            ^
+A2.cpp:151:2: error: expected ‘;’ before ‘}’ token
+  }
+  ^
+A2.cpp:151:2: error: expected primary-expression before ‘}’ token
+A2.cpp:151:2: error: expected ‘;’ before ‘}’ token
+A2.cpp:151:2: error: expected primary-expression before ‘}’ token
+A2.cpp:151:2: error: expected ‘)’ before ‘}’ token
+A2.cpp:151:2: error: expected primary-expression before ‘}’ token
+A2.cpp: In member function ‘void Inventory::print(char)’:
+A2.cpp:156:12: error: ‘x’ does not name a type
+   for(auto x:items){
+            ^
+A2.cpp:159:2: error: expected ‘;’ before ‘}’ token
+  }
+  ^
+A2.cpp:159:2: error: expected primary-expression before ‘}’ token
+A2.cpp:159:2: error: expected ‘;’ before ‘}’ token
+A2.cpp:159:2: error: expected primary-expression before ‘}’ token
+A2.cpp:159:2: error: expected ‘)’ before ‘}’ token
+A2.cpp:159:2: error: expected primary-expression before ‘}’ token
+A2.cpp:162:12: error: ‘x’ does not name a type
+   for(auto x:items){
+            ^
+A2.cpp:165:2: error: expected ‘;’ before ‘}’ token
+  }
+  ^
+A2.cpp:165:2: error: expected primary-expression before ‘}’ token
+A2.cpp:165:2: error: expected ‘;’ before ‘}’ token
+A2.cpp:165:2: error: expected primary-expression before ‘}’ token
+A2.cpp:165:2: error: expected ‘)’ before ‘}’ token
+A2.cpp:165:2: error: expected primary-expression before ‘}’ token
+A2.cpp:168:12: error: ‘x’ does not name a type
+   for(auto x:items){
+            ^
+A2.cpp:171:2: error: expected ‘;’ before ‘}’ token
+  }
+  ^
+A2.cpp:171:2: error: expected primary-expression before ‘}’ token
+A2.cpp:171:2: error: expected ‘;’ before ‘}’ token
+A2.cpp:171:2: error: expected primary-expression before ‘}’ token
+A2.cpp:171:2: error: expected ‘)’ before ‘}’ token
+A2.cpp:171:2: error: expected primary-expression before ‘}’ token
+A2.cpp: In function ‘int main()’:
+A2.cpp:177:7: error: conflicting declaration ‘char t’
+  char t;
+       ^
+A2.cpp:176:6: note: previous declaration as ‘int t’
+  int t;cin>>t;
+      ^
+A2.cpp:119:6: error: ‘void Inventory::add(char)’ is private
+ void Inventory::add(char a){
+      ^
+A2.cpp:182:13: error: within this context
+    inv.add(t);
+             ^
+A2.cpp:119:6: error: ‘void Inventory::add(char)’ is private
+ void Inventory::add(char a){
+      ^
+A2.cpp:185:13: error: within this context
+    inv.add(t);
+             ^
+A2.cpp:119:6: error: ‘void Inventory::add(char)’ is private
+ void Inventory::add(char a){
+      ^
+A2.cpp:188:13: error: within this context
+    inv.add(t);
+             ^
+A2.cpp:109:6: error: ‘void Inventory::del()’ is private
+ void Inventory::del(){
+      ^
+A2.cpp:191:12: error: within this context
+    inv.del();
+            ^
+A2.cpp:153:6: error: ‘void Inventory::print(char)’ is private
+ void Inventory::print(char a){
+      ^
+A2.cpp:194:15: error: within this context
+    inv.print(t);
+               ^
+A2.cpp:153:6: error: ‘void Inventory::print(char)’ is private
+ void Inventory::print(char a){
+      ^
+A2.cpp:197:15: error: within this context
+    inv.print(t);
+               ^
+A2.cpp:153:6: error: ‘void Inventory::print(char)’ is private
+ void Inventory::print(char a){
+      ^
+A2.cpp:200:15: error: within this context
+    inv.print(t);
+               ^
+In file included from /usr/include/c++/4.9/bits/stl_algobase.h:71:0,
+                 from /usr/include/c++/4.9/bits/char_traits.h:39,
+                 from /usr/include/c++/4.9/ios:40,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from A2.cpp:1:
+/usr/include/c++/4.9/bits/predefined_ops.h: In instantiation of ‘bool __gnu_cxx::__ops::_Iter_comp_iter<_Compare>::operator()(_Iterator1, _Iterator2) [with _Iterator1 = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Iterator2 = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = bool (*)(Item, Item)]’:
+/usr/include/c++/4.9/bits/stl_algo.h:1846:27:   required from ‘void std::__insertion_sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_algo.h:1884:70:   required from ‘void std::__final_insertion_sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_algo.h:1970:55:   required from ‘void std::__sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_algo.h:4716:78:   required from ‘void std::sort(_RAIter, _RAIter, _Compare) [with _RAIter = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = bool (*)(Item, Item)]’
+A2.cpp:155:42:   required from here
+/usr/include/c++/4.9/bits/predefined_ops.h:121:46: error: could not convert ‘__it1.__gnu_cxx::__normal_iterator<_Iterator, _Container>::operator*<Item**, std::vector<Item*> >()’ from ‘Item*’ to ‘Item’
+         { return bool(_M_comp(*__it1, *__it2)); }
+                                              ^
+/usr/include/c++/4.9/bits/predefined_ops.h: In instantiation of ‘bool __gnu_cxx::__ops::_Val_comp_iter<_Compare>::operator()(_Value&, _Iterator) [with _Value = Item*; _Iterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = bool (*)(Item, Item)]’:
+/usr/include/c++/4.9/bits/stl_algo.h:1827:34:   required from ‘void std::__unguarded_linear_insert(_RandomAccessIterator, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = __gnu_cxx::__ops::_Val_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_algo.h:1855:46:   required from ‘void std::__insertion_sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_algo.h:1884:70:   required from ‘void std::__final_insertion_sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_algo.h:1970:55:   required from ‘void std::__sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_algo.h:4716:78:   required from ‘void std::sort(_RAIter, _RAIter, _Compare) [with _RAIter = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = bool (*)(Item, Item)]’
+A2.cpp:155:42:   required from here
+/usr/include/c++/4.9/bits/predefined_ops.h:166:37: error: could not convert ‘__val’ from ‘Item*’ to ‘Item’
+  { return bool(_M_comp(__val, *__it)); }
+                                     ^
+/usr/include/c++/4.9/bits/predefined_ops.h: In instantiation of ‘bool __gnu_cxx::__ops::_Iter_comp_val<_Compare>::operator()(_Iterator, _Value&) [with _Iterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Value = Item*; _Compare = bool (*)(Item, Item)]’:
+/usr/include/c++/4.9/bits/stl_heap.h:129:76:   required from ‘void std::__push_heap(_RandomAccessIterator, _Distance, _Distance, _Tp, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Distance = long int; _Tp = Item*; _Compare = __gnu_cxx::__ops::_Iter_comp_val<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_heap.h:230:51:   required from ‘void std::__adjust_heap(_RandomAccessIterator, _Distance, _Distance, _Tp, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Distance = long int; _Tp = Item*; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_heap.h:334:15:   required from ‘void std::__make_heap(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_algo.h:1673:49:   required from ‘void std::__heap_select(_RandomAccessIterator, _RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_algo.h:1932:59:   required from ‘void std::__partial_sort(_RandomAccessIterator, _RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_algo.h:1947:59:   required from ‘void std::__introsort_loop(_RandomAccessIterator, _RandomAccessIterator, _Size, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Size = long int; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_algo.h:1969:11:   required from ‘void std::__sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(Item, Item)>]’
+/usr/include/c++/4.9/bits/stl_algo.h:4716:78:   required from ‘void std::sort(_RAIter, _RAIter, _Compare) [with _RAIter = __gnu_cxx::__normal_iterator<Item**, std::vector<Item*> >; _Compare = bool (*)(Item, Item)]’
+A2.cpp:155:42:   required from here
+/usr/include/c++/4.9/bits/predefined_ops.h:141:37: error: could not convert ‘__it.__gnu_cxx::__normal_iterator<_Iterator, _Container>::operator*<Item**, std::vector<Item*> >()’ from ‘Item*’ to ‘Item’
+  { return bool(_M_comp(*__it, __val)); }
+                                     ^
