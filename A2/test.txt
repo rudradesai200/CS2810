@@ -1,0 +1,14 @@
+17
+a 10 23.32 abc xyz
+a 11 43.4 cdf uvw
+b 10 3.32 ghi lmp
+c 11 34.43 jkl omn
+a 20 23.32 abc xyz
+a 21 43.4 cdf uvw
+a 22 67.3 abc pqr
+b 20 3.32 ghi lmp
+d 10
+d 11
+p q r
+d 20
+p q r
