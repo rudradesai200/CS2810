@@ -8,18 +8,20 @@ template<class T>
 class Node {
     private:
         T val;                                      //stores value
-        T *next, *prev;                             //stores links to next and prev pointers
+        Node *next, *prev;                             //stores links to next and prev pointers
 
     public:
-        Node(T x, T *p);                            //constructor
-        void setNext(const Node<T> *A);             //sets Next pointer
+        Node(T x, Node *p);                            //constructor
+        void setNext(Node *A);                   //sets Next pointer
         Node* getPrev();                            //returns Prev pointer
+        T getVal();                                 //returns the value stored in the node
 };
 
 template <class T>
 class Stack{
     private:
-        Node<T> *currptr;                           //stores the top of the stack
+        Node<T> *currptr;   
+        int si;                        //stores the top of the stack
     
     public:
         Stack();                                    //Constructor for stack class
@@ -27,6 +29,7 @@ class Stack{
         T front();                                  //returns the top element on stack
         void pop();                                 //removes the top of the stack
         bool empty();                               //check for isEmpty()
+        int size();
 };
 
 class Polynomial{
@@ -49,6 +52,6 @@ vector<char> takeIntInput();                        //takes int input
 vector<vector<char> > takePolyInput();              //takes polynomial input
 
 int solve(int num1,int num2, char op);              //gives result of (num1 op num2)
-void process(Stack<int> num, Stack<char> symb);     //processes one step of operation
+void process(Stack<int> &num, Stack<char> &symb);     //processes one step of operation
 void evaluateint();                                 //evaluate the given expression for int
 void evaluatepoly();                                //evaluates the given expression for polynomial

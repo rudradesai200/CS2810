@@ -3,14 +3,14 @@
 
 using namespace std;
 template <class T>
-    Node<T>::Node(T x, T *p){
+    Node<T>::Node(T x, Node<T> *p){
         val = x;
         next = nullptr;
         prev = p;
     }
 
 template <class T>
-    void Node<T>::setNext(const Node<T> *A){
+    void Node<T>::setNext(Node<T> *A){
         next = A;
     }
 
@@ -19,9 +19,14 @@ template <class T>
         return prev;
     }
 
+template <class T>
+    T Node<T>::getVal(){
+        return val;
+    }
 template<class T>
     Stack<T>::Stack(){
     currptr = nullptr;
+    si = 0;
     }
 
 template<class T>
@@ -32,24 +37,31 @@ template<class T>
             currptr->setNext(temp);
             currptr = temp;
         }
+        si++;
     }
 
 template<class T>
     T Stack<T>::front(){
-        return *currptr;
+        return currptr->getVal();
     }
 
 template <class T>
     void Stack<T>::pop(){
         Node<T> *temp = currptr;
         currptr = currptr->getPrev();
-        currptr->setNext(nullptr);
+        if(currptr != nullptr) currptr->setNext(nullptr);
         delete temp;
+        si--;
     }
 
 template <class T>
     bool Stack<T>::empty(){
         return (currptr == nullptr);
+    }
+
+template <class T>
+    int Stack<T>::size(){
+        return si;
     }
 
 void Polynomial::initCoeffs(){
@@ -134,7 +146,8 @@ int precedence(char op){
 vector<char> takeIntInput() {
 
     vector<char> res;
-    std::string line, token;
+    std::string line;
+    char token;
     std::cin.ignore();
     std::getline(std::cin, line);
 
@@ -192,7 +205,7 @@ int solve(int num1,int num2, char op){
     }
 }
 
-void process(Stack<int> num, Stack<char> symb){
+void process(Stack<int> &num, Stack<char> &symb){
     int num1 = num.front();
     num.pop();
     int num2 = num.front();
@@ -211,7 +224,7 @@ void evaluateint(){
 
     int result;
     for(auto x:tokens){
-        if((x >=' 0') && (x<='9')) num.push((x-'0'));
+        if((x >= '0') && (x<='9')) num.push((x-'0'));
         else if((x=='+') || (x=='-') || (x=='*')){
             if(symb.empty()) symb.push(x);
             else{
@@ -230,8 +243,9 @@ void evaluateint(){
     if(!num.empty()){
         while(!symb.empty()) process(num,symb);
     }
-
+    cout<<num.front()<<endl;
 }
+void evaluatepoly(){}
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
     int N;cin>>N;
