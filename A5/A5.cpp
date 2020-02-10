@@ -123,8 +123,17 @@ void Polynomial::print(){
     cout<<endl;
 }
 
-void takeIntInput() {
+int precedence(char op){
+    switch(op){
+        case '+': return 2; break;
+        case '-': return 1; break;
+        case '*': return 3; break;
+        default: return 0; break;
+    }
+}
+vector<char> takeIntInput() {
 
+    vector<char> res;
     std::string line, token;
     std::cin.ignore();
     std::getline(std::cin, line);
@@ -132,15 +141,17 @@ void takeIntInput() {
     std::stringstream ss(line);
     
     while(ss >> token) {
+        res.push_back(token);
         // process each token
         // this will either be an operator, a parenthesis or an integer
     }
+    return res;
 }
 
-void takePolyInput() {
+vector<vector<char> > takePolyInput() {
     int num;
     std::cin >> num;
-
+    vector<vector<char> > res;
     std::string line;
 
     std::cin.ignore();
@@ -149,6 +160,9 @@ void takePolyInput() {
         std::getline(std::cin, line);
 
         if(line.size() == 1) {
+            vector<char> temp;
+            temp.push_back(line[0]);
+            res.push_back(temp);
             // process the line
             // this will be either an operator or a parenthesis
         }
@@ -158,14 +172,66 @@ void takePolyInput() {
 
             int exponent;
             long long coeff;
+            vector<char> temp;
             while(ss >> exponent, ss >> coeff) {
+                temp.push_back(exponent);
+                temp.push_back(coeff);
                 // process the exponent and coefficient appropriately
             }
+            res.push_back(temp);
 
         }
     }
 }
 
+int solve(int num1,int num2, char op){
+    switch(op){
+        case '+': return (num1 + num2);
+        case '-': return (num1 - num2);
+        case '*': return (num1 * num2);
+    }
+}
+
+void process(Stack<int> num, Stack<char> symb){
+    int num1 = num.front();
+    num.pop();
+    int num2 = num.front();
+    num.pop();
+    char op = symb.front();
+    symb.pop();
+    int res = solve(num1,num2,op);
+    num.push(res);
+}
+
+void evaluateint(){
+    Stack<int> num;
+    Stack<char> symb;
+
+    vector<char> tokens = takeIntInput();
+
+    int result;
+    for(auto x:tokens){
+        if((x >=' 0') && (x<='9')) num.push((x-'0'));
+        else if((x=='+') || (x=='-') || (x=='*')){
+            if(symb.empty()) symb.push(x);
+            else{
+                if(precedence(x) > precedence(symb.front())) symb.push(x);
+                else while(precedence(x) < precedence(symb.front())) process(num,symb);
+            }
+        }
+        else{
+            if(x == '(') symb.push(x);
+            else if(x == ')'){
+                while(symb.front() != '(') process(num,symb);
+                symb.pop();
+            }
+        }
+    }
+    if(!num.empty()){
+        while(!symb.empty()) process(num,symb);
+    }
+
+}
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
     int N;cin>>N;
