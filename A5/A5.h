@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
-
-#define MAX_DEGREE 10
+#define MAX_DEGREE 100
 
 using namespace std;
 
@@ -21,37 +20,48 @@ template <class T>
 class Stack{
     private:
         Node<T> *currptr;   
-        int si;                        //stores the top of the stack
+        long long si;                        //stores the top of the stack
     
     public:
         Stack();                                    //Constructor for stack class
         void push(T x);                             //Pushes element on stack
-        T front();                                  //returns the top element on stack
-        void pop();                                 //removes the top of the stack
+        T top();                                  //returns the top element on stack
+        void pop();                                      //removes the top of the stack
         bool empty();                               //check for isEmpty()
-        int size();
+        long long size();
+        void print();
 };
+
+long long convert_string_to_int(string x);
 
 class Polynomial{
 public:
-    int si;
-    vector<double> coeff;
+    long long si;
+    vector<long long> coeff;
     
-    void initCoeffs();                              //to initialize coeffecients
+    void initCoeffs(string x);                              //to initialize coeffecients
     Polynomial operator+(Polynomial p);             //operator overloading +
     Polynomial operator-(Polynomial p);             //operator overloading -
     Polynomial operator*(Polynomial p);             //operator overloading *
-    char sign(double x);                            //sign type return
+    char sign(long long x);                            //sign type return
     void print();                                   //printing Polynomial
 
 };
 
-int precedence(char op);                            //returns precedence of operators
+void split3(const std::string& str, vector<string>& cont,char delim = ' ');
 
-vector<char> takeIntInput();                        //takes int input
-vector<vector<char> > takePolyInput();              //takes polynomial input
+long long precedence(char op);                            //returns precedence of operators
 
-int solve(int num1,int num2, char op);              //gives result of (num1 op num2)
-void process(Stack<int> &num, Stack<char> &symb);     //processes one step of operation
+vector<string> takeIntInput();                        //takes int input
+vector<string> takePolyInput();              //takes polynomial input
+
+template <class T>
+T solve(T num1,T num2, char op);              //gives result of (num1 op num2)
+
+template <class T>
+void process(Stack<T> &num, Stack<char> &symb);     //processes one step of operation
+
+
+
 void evaluateint();                                 //evaluate the given expression for int
 void evaluatepoly();                                //evaluates the given expression for polynomial
