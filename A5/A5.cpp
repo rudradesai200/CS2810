@@ -3,88 +3,77 @@
 using namespace std;
 
 template <class T>
-    Node<T>::Node(T x, Node<T> *p){
-        val = x;
-        next = nullptr;
-        prev = p;
-    }
+Node<T>::Node(T x, Node<T> *p){
+    val = x;
+    next = nullptr;
+    prev = p;
+}
 
 template <class T>
-    void Node<T>::setNext(Node<T> *A){
-        next = A;
-    }
+void Node<T>::setNext(Node<T> *A){
+    next = A;
+}
 
 template <class T>
-    Node<T> *Node<T>::getPrev(){
-        return prev;
-    }
+Node<T> *Node<T>::getPrev(){
+    return prev;
+}
 
 template <class T>
-    T Node<T>::getVal(){
-        return val;
-    }
+T Node<T>::getVal(){
+    return val;
+}
 template<class T>
-    Stack<T>::Stack(){
+Stack<T>::Stack(){
     currptr = nullptr;
     si = 0;
-    }
-
-template<class T>
-    void Stack<T>::push(T x){
-        if(currptr == nullptr) currptr = new Node<T>(x,nullptr);
-        else {
-            Node<T> *temp = new Node<T>(x,currptr);
-            currptr->setNext(temp);
-            currptr = temp;
-        }
-        si++;
-    }
-
-template<class T>
-    T Stack<T>::top(){
-        return currptr->getVal();
-    }
-
-template <class T>
-    void Stack<T>::pop(){
-        Node<T> *temp = currptr;
-        currptr = currptr->getPrev();
-        if(currptr != nullptr) currptr->setNext(nullptr);
-        delete temp;
-        si--;
-    }
-
-template <class T>
-    bool Stack<T>::empty(){
-        return (currptr == nullptr);
-    }
-
-template <class T>
-    long long Stack<T>::size(){
-        return si;
-    }
-
-template <class T>
-    void Stack<T>::print(){
-        Node<T> *curr = currptr;
-        while(curr != nullptr){
-            cout<<curr->getVal()<<' ';
-            curr = curr->getPrev();
-        }
-        cout<<endl;
-    }
-
-void split3(const std::string& str, vector<string>& cont,char delim)
-{
-    std::size_t current, previous = 0;
-    current = str.find(delim);
-    while (current != std::string::npos) {
-        cont.push_back(str.substr(previous, current - previous));
-        previous = current + 1;
-        current = str.find(delim, previous);
-    }
-    cont.push_back(str.substr(previous, current - previous));
 }
+
+template<class T>
+void Stack<T>::push(T x){
+    if(currptr == nullptr) currptr = new Node<T>(x,nullptr);
+    else {
+        Node<T> *temp = new Node<T>(x,currptr);
+        currptr->setNext(temp);
+        currptr = temp;
+    }
+    si++;
+}
+
+template<class T>
+T Stack<T>::top(){
+    return currptr->getVal();
+}
+
+template <class T>
+void Stack<T>::pop(){
+    Node<T> *temp = currptr;
+    currptr = currptr->getPrev();
+    if(currptr != nullptr) currptr->setNext(nullptr);
+    delete temp;
+    si--;
+}
+
+template <class T>
+bool Stack<T>::empty(){
+    return (currptr == nullptr);
+}
+
+template <class T>
+long long Stack<T>::size(){
+    return si;
+}
+
+template <class T>
+void Stack<T>::print(){
+    Node<T> *curr = currptr;
+    while(curr != nullptr){
+        cout<<curr->getVal()<<' ';
+        curr = curr->getPrev();
+    }
+    cout<<endl;
+}
+
 
 long long convert_string_to_int(string x){
     return stoll(x, nullptr, 10);
@@ -95,55 +84,48 @@ void Polynomial::initCoeffs(string x){
     for(long long i=0;i<MAX_DEGREE;i++){coeff[i] = 0;}
 
     vector<string> vec;
-    split3(x,vec,' ');
+    std::stringstream ss(x);
     long long idx,temp;
     long long i= 0;
-    for(auto x: vec){
-        if(i%2 == 0){
-            idx = convert_string_to_int(x);
-        }
-        else{
-            temp = convert_string_to_int(x);
-            coeff[idx]=temp;
-        }
-        i++;
+    while(ss>>idx, ss>>temp){
+        coeff[idx]=temp;
     }
 }
 
 Polynomial Polynomial::operator+(Polynomial p){
-        Polynomial result;
-        for(long long i=0;i<MAX_DEGREE;i++){
-            long long a=coeff[i];
-            long long b = p.coeff[i];
-            result.coeff.push_back(a+b);
-        }
-        return result;
+    Polynomial result;
+    for(long long i=0;i<MAX_DEGREE;i++){
+        long long a=coeff[i];
+        long long b = p.coeff[i];
+        result.coeff.push_back(a+b);
+    }
+    return result;
 }
 Polynomial Polynomial::operator-(Polynomial p){
-        Polynomial result;
-        for(long long i=0;i<MAX_DEGREE;i++){
-            long long a=coeff[i];
-            long long b = p.coeff[i];
-            result.coeff.push_back(a-b);
-        }
-        return result;
+    Polynomial result;
+    for(long long i=0;i<MAX_DEGREE;i++){
+        long long a=coeff[i];
+        long long b = p.coeff[i];
+        result.coeff.push_back(a-b);
+    }
+    return result;
 }
 Polynomial Polynomial::operator*(Polynomial p){
-        Polynomial result;
-        for(long long i=0;i<MAX_DEGREE;i++){result.coeff.push_back(0);}
+    Polynomial result;
+    for(long long i=0;i<MAX_DEGREE;i++){result.coeff.push_back(0);}
 
-        for(long long i=0;i<ceil(MAX_DEGREE/2.0);i++){
-            long long a=coeff[i];
-            if(a != 0){
-                for(long long j=0;j<ceil(MAX_DEGREE/2.0);j++){
-                    long long b=p.coeff[j];
-                    if(b != 0){
-                        result.coeff[(i+j)] += (a*b);
-                    }
+    for(long long i=0;i<ceil(MAX_DEGREE/2.0);i++){
+        long long a=coeff[i];
+        if(a != 0){
+            for(long long j=0;j<ceil(MAX_DEGREE/2.0);j++){
+                long long b=p.coeff[j];
+                if(b != 0){
+                    result.coeff[(i+j)] += (a*b);
                 }
             }
         }
-        return result;
+    }
+    return result;
 }
 char Polynomial::sign(long long x){
     if(x < 0){return '-';}
@@ -163,7 +145,7 @@ void Polynomial::print(){
     while((i<(MAX_DEGREE))){
         long long a = coeff[i];
         if(a != 0){
-            cout<<' '<<sign(a)<<' '<<abs(a)<<"x^"<<i;
+            cout<<' '<<sign(a)<<' '<<llabs(a)<<"x^"<<i;
         }
         i++;
     }
@@ -172,11 +154,11 @@ void Polynomial::print(){
 
 long long precedence(char op){ 
     if(op == '+'||op == '-') 
-    return 1; 
+        return 1; 
     if(op == '*') 
-    return 2; 
+        return 2; 
     if(op == '/')
-    return 3;
+        return 3;
     return 0; 
 } 
 
@@ -189,7 +171,9 @@ vector<string> takeIntInput() {
 
     std::stringstream ss(line);
     vector<string> tokenvec;
-    split3(line,tokenvec,' ');
+    while(ss>>token){
+        tokenvec.push_back(token);
+    }
     return tokenvec;
 }
 
@@ -200,7 +184,8 @@ vector<string> takePolyInput() {
     std::string line;
 
     std::cin.ignore();
-
+    
+    
     for(long long i = 0; i < num; i++) {
         std::getline(std::cin, line);
 
@@ -250,7 +235,7 @@ void evaluateint(){
                 process(values,ops); 
             } 
             if(!ops.empty()) 
-               ops.pop(); 
+                ops.pop(); 
         } 
         else if((a == "+") || (a == "-") || (a == "*"))
         { 
@@ -269,8 +254,6 @@ void evaluateint(){
     while(!ops.empty()){ 
         process(values,ops); 
     } 
-      
-   
     cout<<values.top()<<endl;  
 }
 void evaluatepoly(){
@@ -290,7 +273,7 @@ void evaluatepoly(){
                 process(values,ops); 
             } 
             if(!ops.empty()) 
-               ops.pop(); 
+                ops.pop(); 
         } 
         else if((a == "+") || (a == "-") || (a == "*"))
         { 
@@ -308,8 +291,6 @@ void evaluatepoly(){
     while(!ops.empty()){ 
         process(values,ops); 
     } 
-      
-   
     values.top().print();
 }
 int main() {
