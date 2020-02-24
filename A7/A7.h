@@ -1,87 +1,45 @@
 #include<bits/stdc++.h>
+typedef struct TreeNode *PtrToNode;
+typedef int DataType;
 
 using namespace std;
 
-class Student{
-    private:
-    int ID;
-    int marks[5];
-    int skill;
-
-    public:
-    Student *left, *right;
-    Student(int id,int a,int b,int c,int d, int e, int sk){
-        ID = id;
-        marks[0] = a;
-        marks[0] = b;
-        marks[0] = c;
-        marks[0] = d;
-        marks[0] = e;
-        skill = sk;
-        left = right = nullptr;
-
-    }
-    int getId(){return ID;}
-    int getMarks(int i){
-        return (marks[i]);
-    }
-    bool operator< (Student A){
-        for(int i=0;i<5;i++)
-            if(marks[i] > A.getMarks(i)){
-                return 1;
-            }
-        
-        return 0;
-    }
-    bool operator> (Student A){
-        return !(*this < A);
-    }
-    void print(){
-        cout<<ID<<' '<<marks[0]<<' '<<marks[1]<<' '<<marks[2]<<' '<<marks[3]<<' '<<marks[4]<<' '<<skill<<endl;
-    }
+struct TreeNode {
+	DataType ID, marks0, marks1, marks2, marks3, marks4, skill;
+	PtrToNode left, right;
+	int height;
+	TreeNode::TreeNode(DataType id, DataType m0,DataType m1,DataType m2,DataType m3,DataType m4,DataType sk);
+	void addChild(PtrToNode);
+	int getHeight() { return height; }
+	int updateHeight();
+	int updateHeight(int, int);
+	bool imbalanced();
+	PtrToNode taller();
+	void print();
+    bool operator< (TreeNode A);
+    bool operator> (TreeNode A);
 };
 
-class Tree{
-    public:
-    Student* Head;
-    int size;
-
-    Tree(){
-        Head = nullptr;
-    }
-    void add(){
-        int a,b,c,d,e,f,g; cin>>a>>b>>c>>d>>e>>f>>g;
-        Student *n = new Student(a,b,c,d,e,f,g);
-
-        if(Head == nullptr){
-            Head = new Student(a,b,c,d,e,f,g);
-        }
-        else{
-            Student *currptr = Head;
-            while(currptr != NULL){
-                if(*currptr < *n){
-                    currptr = currptr->left;
-                }
-                else{
-                    if(*currptr > *n){
-                        currptr = currptr->right;
-                    }
-                    else{
-                        cerr << "STUDENT WITH SAME MARKS FOUND"<<endl;
-                    }
-                }
-            }
-            currptr = new Student(a,b,c,d,e,f,g);
-        }
-    }
-    void printInUtil(Student *nd){
-        if(nd != nullptr){
-            printInUtil(nd->left);
-            nd->print():
-            printInUtil(nd->right);
-        }
-    }
-    void printInorder(){
-        printInUtil(Head);
-    }
+class Tree {
+	PtrToNode root;
+public:
+	Tree():root(NULL) { }
+	void print();
+	void inorder();
+	void inorder(PtrToNode);
+	PtrToNode insert();
+	PtrToNode insert(PtrToNode, PtrToNode);
+	PtrToNode rotateLeft(PtrToNode);
+	PtrToNode rotateRight(PtrToNode);
+	PtrToNode rotateLeftRight(PtrToNode);
+	PtrToNode rotateRightLeft(PtrToNode);
+	bool search(DataType data, PtrToNode rr);
+	bool search(DataType data);
+	PtrToNode remove(DataType);
+	PtrToNode remove(DataType, PtrToNode);
+	void printGraphviz();
+	void printGraphviz(PtrToNode rr);
+    DataType Update();
 };
+
+	
